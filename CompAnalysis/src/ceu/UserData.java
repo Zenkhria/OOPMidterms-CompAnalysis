@@ -1,6 +1,8 @@
 package ceu;
 
+import java.io.IOException;
 import java.util.Date;
+import java.util.Scanner;
 
 public class UserData 
 {
@@ -15,19 +17,38 @@ public class UserData
   private Date birthDate;
   private String birthPlace;
   private int prefChildCount;
-
+  private int rerunCount;
+  
+  static Scanner sc = new Scanner( System.in );
+  InputValidation validation = new InputValidation();
+  static boolean validated;
+  
   // SETTERS
-  public void setfullName( String fullName )
+  public void setfullName()
   {
-    this.fullName = fullName;
+	  do {
+		  System.out.print( "Full Name: " );
+		  fullName = sc.next();
+		  
+		  validated = validation.FullName( fullName );
+		  
+		  rerunCount++;
+	  }while( !validated );
   }
 
-  public void setAddress( String address )
+  public void setAddress() throws IOException
   {
-    this.address = address;
+	  do {
+		  System.out.println( "Address: " );
+		  address = sc.nextLine();
+		 
+		  validated = validation.Address( address );
+		  
+		  rerunCount++;
+	  }while( !validated );
   }
 
-  public void setCourse( String course )
+  public void setCourse( )
   {
     this.course = course;
   }
@@ -63,6 +84,50 @@ public class UserData
   }
 
   // GETTERS
+  public String getfullName()
+  {
+    return this.fullName;
+  }
+
+  public String getAddress()
+  {
+    return this.address;
+  }
+
+  public String getCourse()
+  {
+	return this.course;
+  }
+
+  public String getFavMovie()
+  {
+	return this.favMovie;
+  }
+
+  public String getFavFood()
+  {
+	return this.favFood;
+  }
+
+  public int getFavNum()
+  {
+	return this.favNum;
+  }
+
+  public Date getBirthDate()
+  {
+	return this.birthDate;
+  }
+
+  public String getBirthPlace()
+  {
+	return this.birthPlace;
+  }
+
+  public int getPrefChildCount()
+  {
+	return this.prefChildCount;
+  }
 }
 
 

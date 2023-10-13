@@ -1,12 +1,14 @@
 package ceu;
 import java.util.Scanner;
+import java.io.IOException;
 import java.util.Date; 
-import com.fasterxml.jackson.databind.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 public class Main{
 	static Scanner sc = new Scanner( System.in );
 	static int rerunCount = 0;
-	public static void main( String[] args ) 
+	public static void main( String[] args ) throws IOException 
 	{
 		while ( true )
 		{
@@ -16,41 +18,18 @@ public class Main{
 
 			// CREATING NEW USER DATA OBJECT
 			UserData user = new UserData();
-			InputValidation validation = new InputValidation();
 
 			// FULL NAME INPUT & VALIDATION
-			System.out.print( "Full Name: " );
-			String fullName = sc.nextLine();
-
-			if ( validation.FullName() == true )
-			{
-				user.setfullName( fullName );
-			}
-			else
-			{
-				rerunCount++;
-				// TODO: INSERT TIMER LOGIC
-				// RECOMMENDATION: MAKE METHOD FOR THE LOGIC IN THIS ELSE BLOCK. 
-				continue;
-			}
+			user.setfullName();	
 
 			// ADDRESS INPUT & VALIDATION
-			System.out.println( "Address: " );
-			String address = sc.nextLine(); // FIXME: Idk how to fetch data from an API yet.
-
-			if ( validation.Address() == true )
-			{
-				user.setAddress( address );
-			}
-			else
-			{
-				rerunCount++;
-				// TODO: INSERT TIMER LOGIC
-				// RECOMMENDATION: MAKE METHOD FOR THE LOGIC IN THIS ELSE BLOCK. 
-				continue;
-			}
+			user.setAddress();
 
 			// COURSE INPUT & VALIDATION
+			user.setCourse();
+			
+			
+			
 			System.out.println( "Course: " );
 			String course = sc.nextLine();
 
@@ -102,7 +81,7 @@ public class Main{
 			if ( validation.BirthDate() == true )
 			{
 				user.setBirthDate( birthDate );
-			}
+		}
 			else
 			{
 				rerunCount++;
@@ -132,7 +111,7 @@ public class Main{
 			sc.nextLine();
 			if ( validation.PrefChildCount() == true )
 			{
-				user.setPrefChildCount( prefChildCount );
+ 			 user.setPrefChildCount( prefChildCount );
 			}
 			else
 			{
