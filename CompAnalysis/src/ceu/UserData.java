@@ -31,7 +31,6 @@ public class UserData
 		  fullName = sc.next();
 		  
 		  validated = validation.FullName( fullName );
-		  
 		  rerunCount++;
 	  }while( !validated );
   }
@@ -50,37 +49,86 @@ public class UserData
 
   public void setCourse( )
   {
-    this.course = course;
+	  do {
+		  System.out.print( "Course: " );
+		  course = sc.next();
+		  
+		  validated = validation.FullName( course );
+		  
+		  rerunCount++;
+	  }while( !validated );
   }
 
-  public void setFavMovie( String favMovie )
+  public void setFavMovie( )
   {
-    this.favMovie = favMovie;
+	  do {
+		  System.out.print( "FavMovie: " );
+		  favMovie = sc.next();
+		  
+		  validated = validation.FullName( favMovie );
+		  
+		  rerunCount++;
+	  }while( !validated );
   }
 
-  public void setFavFood( String favFood )
+  public void setFavFood( )
   {
-    this.favFood = favFood;
+	  do {
+		  System.out.print( "FavFood: " );
+		  favFood = sc.next();
+		  
+		  validated = validation.FavFood( favFood );
+		  
+		  rerunCount++;
+	  }while( !validated );
   }
 
-  public void setFavNum( int favNum )
+  public void setFavNum( )
   {
-    this.favNum = favNum;
+	  do {
+		  System.out.print( "FavNum: " );
+		  	favNum = sc.nextInt();
+		  
+		  validated = validation.FavNumber( favNum );
+		  
+		  rerunCount++;
+	  }while( !validated );
   }
 
-  public void setBirthDate( Date birthDate )
+  public void setBirthDate( )
   {
-    this.birthDate = birthDate;
+	  do {
+		  System.out.print( "BirthDate: " );
+		  birthDate = sc.next();
+		  
+		  validated = validation.BirthDate( birthDate );
+		  
+		  rerunCount++;
+	  }while( !validated );
   }
 
-  public void setBirthPlace( String birthPlace )
+  public void setBirthPlace( )
   {
-    this.birthPlace = birthPlace;
+	  do {
+		  System.out.print( "BirthPlace: " );
+		  birthPlace = sc.next();
+		  
+		  validated = validation.BirthPlace( birthPlace );
+		  
+		  rerunCount++;
+	  }while( !validated );
   }
 
-  public void setPrefChildCount( int prefChildCount )
+  public void setPrefChildCount( )
   {
-    this.prefChildCount = prefChildCount;
+	  do {
+		  System.out.print( "PrefChildCount: " );
+		  prefChildCount = sc.nextInt();
+		  
+		  validated = validation.PrefChildCount( prefChildCount );
+		  
+		  rerunCount++;
+	  }while( !validated );
   }
 
   // GETTERS

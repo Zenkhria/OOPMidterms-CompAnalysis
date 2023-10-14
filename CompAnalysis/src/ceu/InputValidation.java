@@ -1,6 +1,7 @@
 package ceu;
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,49 +37,49 @@ public class InputValidation
     return true;
   }
 
-  public boolean Course()
+  public boolean Course(String course)
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean FavMovie()
+  public boolean FavMovie(String movie)
   {
     // TODO: ADD CODE 
     return true;
   }
-
-  public boolean FavNumber()
+  
+  public boolean FavNumber(int number)
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean FavMovieChar()
+  public boolean FavMovieChar(String movieChar)
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean FavFood()
+  public boolean FavFood(String food)
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean BirthDate()
+  public boolean BirthDate(Date birthDate)
+  {
+    // TODO: ADD CODE HER
+    return true;
+  }
+
+  public boolean BirthPlace(String birthPlace)
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean BirthPlace()
-  {
-    // TODO: ADD CODE HERE
-    return true;
-  }
-
-  public boolean PrefChildCount()
+  public boolean PrefChildCount(int prefChildCount)
   {
     // TODO: ADD CODE HERE
     return true;
