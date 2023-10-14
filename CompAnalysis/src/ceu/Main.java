@@ -173,12 +173,9 @@ public class Main{
 			}
 			else if ( replyWordCount < 30 )
 			{
-				// FIXME: Call MineSweeper();
+				MineSweeper minesweeper = new MineSweeper( 8, 8, 10 );
+				minesweeper.playGame();			
 			}
-			
-
 		}
-
-	
 	}
 }
