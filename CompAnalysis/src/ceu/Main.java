@@ -28,10 +28,7 @@ public class Main
 	
 			// WELCOME MESSAGE
 			System.out.println( "\nPROFILYSIS: COMPREHENSIVE USER ANALYSIS SOFTWARE");
-			System.out.println( "Welcome! To start your analysis, provide the following details. ");
-
-			RaceCarSimulator raceCarSimulator = new RaceCarSimulator();
-			raceCarSimulator.RunGame();
+			System.out.println( "Welcome! To start your analysis, provide the following details. ");		
 			
 			// CREATING NEW USER DATA OBJECT
 			UserData user = new UserData();
@@ -286,8 +283,8 @@ public class Main
 				
 				if ( answer.equalsIgnoreCase( "yes" ) )
 				{
-					
-					
+					RaceCarSimulator raceCarSimulator = new RaceCarSimulator();
+					raceCarSimulator.RunGame();				
 				}
 				else if ( answer.equalsIgnoreCase( "no" ) )
 				{
