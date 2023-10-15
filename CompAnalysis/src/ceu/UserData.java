@@ -14,7 +14,7 @@ public class UserData
   private int favNum;
   private String favMovieChar; 
   private String favFood;
-  private Date birthDate;
+  private String birthDate;
   private String birthPlace;
   private int prefChildCount;
   // private int rerunCount;
@@ -66,19 +66,22 @@ public class UserData
   {
 		  System.out.print( "\nBirthDate (YYYY-mm-dd): " );
 		  String birthDateString = sc.nextLine();
+
   }
 
   public void setBirthPlace( )
   {
 		  System.out.print( "\nBirthPlace: " );
 		  birthPlace = sc.nextLine();
+      // FIXME: Convert String to Date and check if user's age is valid.
+
   }
 
   public void setPrefChildCount( )
   {
 		  System.out.print( "\nPrefChildCount: " );
 		  prefChildCount = sc.nextInt();
-      sc.nextLine()
+      sc.nextLine();
   }
 
   // GETTERS
@@ -112,7 +115,7 @@ public class UserData
 	return this.favNum;
   }
 
-  public Date getBirthDate()
+  public String getBirthDate()
   {
 	return this.birthDate;
   }

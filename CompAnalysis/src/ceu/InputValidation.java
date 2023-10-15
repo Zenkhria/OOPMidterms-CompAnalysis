@@ -1,6 +1,8 @@
 package ceu;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -119,11 +121,40 @@ public class InputValidation
     }
   }
 
-  public boolean BirthDate( Date birthDate )
+  public boolean BirthDate( String birthDate )
   {
-    // TODO: ADD CODE HER
-    return true;
+    // TODO: ADD CODE HERE
+    if ( birthDate.matches( "\\d{4}-\\d{2}-\\d{2}" ) && isValidAge( birthDate ) )
+    {
+      System.out.println( "BIRTH DATE RECORDED." );
+      return true;
+    }
+    else
+    {
+      System.out.println( "Invalid Birth Date. Rerunning Program..." );
+      return false;
+    }
   }
+
+  private boolean isValidAge( String birthDate ) 
+  {
+    Date currentDate = new Date();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+    try
+    {
+      Date userBirthDate = dateFormat.parse( birthDate );
+      long ageInMillis = currentDate.getTime() - userBirthDate.getTime();
+      long years = ageInMillis / (365 * 24 * 60 * 60 * 1000L);
+
+      // Assuming a realistic age range (e.g., 0-150 years)
+      return years >= 0 && years <= 150;
+    }
+    catch (ParseException e) 
+    {
+      return false;
+    }
+}
 
   public boolean BirthPlace( String birthPlace )
   {
