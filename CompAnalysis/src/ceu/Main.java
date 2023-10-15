@@ -1,7 +1,16 @@
 package ceu;
 import java.util.Scanner;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.Date; 
+import java.util.Date;
+import com.google.gson.JsonParser;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
+
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main
@@ -89,8 +98,28 @@ public class Main
 			// ObjectMapper objectMapper = new ObjectMapper();
 			// objectMapper.writeValue( new File( "userdata.json" ), user );
 			
+			System.out.println( "EVALUATION");
 			// GET THE REGION OF USER'S ADDRESS
 			// TODO: Place code here
+			try {
+					// Load and parse the JSON file
+					JsonParser jsonParser = new JsonParser();
+					FileReader fileReader = new FileReader( "Region.json" );
+					JsonObject json = ( JsonObject ) jsonParser.parse( fileReader );
+
+					// Iterate through the JSON keys (regions)
+					for (String region : json.keySet()) {
+							if ( json.get( region ).getAsJsonArray().contains( user.getAddress() )) {
+									System.out.println( "The address " + user.getAddress() + " is in the region " + region. );
+									return; // Stop searching after finding a match
+							}
+					}
+
+					// If no match is found
+					System.out.println("The address " + address + " is not in any region.");
+			} catch (Exception e) {
+					e.printStackTrace();
+			}
 			
 			// GET THE CLASSIFICATION OF USER'S COURSE
 			// TODO: Place code here
@@ -157,7 +186,7 @@ public class Main
 			String psychEvaluation = null;
 			
 			// COMPREHENSIVE USER ANALYSIS REPORT
-			System.out.println( "COMPREHENSIVE USER ANALYSIS REPORT" );
+			System.out.println( "\nCOMPREHENSIVE USER ANALYSIS REPORT" );
 			String compAnalysisReport = user.getfullName() + " lives in " + user.getAddress() + "which can be found in " + region + 
 										" . Their course, " +  user.getCourse() + " , is classified under " + courseCategory + 
 										" . There are " + consonantCount + " consonants and " + vowelCount + " vowels in " + userFirstName + "'s full name. " +
@@ -178,10 +207,11 @@ public class Main
 			
 			// PROVIDE COMPREHENSIVE USER ANALYSIS REPORT TO USER
 			System.out.println( compAnalysisReport );
+			System.out.println( "Letter Count: " + letterCount );
 			
 			// GET REPLY FROM USER
-			System.out.println( "What do you think about the report?" );
-			System.out.println( ">>> " );
+			System.out.println( "\nWhat do you think about the report?" );
+			System.out.print( ">>> " );
 			
 			String reply = sc.nextLine();
 			
