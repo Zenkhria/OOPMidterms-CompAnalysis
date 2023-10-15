@@ -12,16 +12,16 @@ public class InputValidation
 {
   public boolean FullName( String fullName )
   {
-	  for( int i = 0 ; i < fullName.length();i++ )
+    if ( !fullName.matches( ".*\\d+.*" ) && !fullName.matches( ".*[^aeiouAEIOU]{4,}.*" ) && !fullName.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
-			char ch = fullName.charAt( i );
-		    if ( Character.isLetter( ch ) || ch == ' ' ) 
-		    {
-		      continue;
-		    }
-		    return false;
-	  }
-	  return true;
+      System.out.println( "NAME RECORDED." );
+      return true;
+    } 
+    else 
+    {
+      System.out.println( "Invalid Name. Rerunning Program..." );
+      return false;
+    }
   }
 
   public boolean Address( String address ) throws IOException

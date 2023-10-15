@@ -1,4 +1,4 @@
-package.ceu;
+package ceu;
 
 import java.util.Scanner;
 import java.util.Random;

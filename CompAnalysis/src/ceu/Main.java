@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.util.Date; 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
-public class Main{
+public class Main
+{
 	static Scanner sc = new Scanner( System.in );
 	static int rerunCount = 0;
+	static InputValidation validation = new InputValidation();
+
 	public static void main( String[] args ) throws IOException
 	{
 		while ( true )
@@ -21,27 +23,67 @@ public class Main{
 
 			// FULL NAME INPUT & VALIDATION
 			user.setfullName();	
+			if ( !validation.FullName( user.getfullName() ) )
+			{
+				rerunCount++;
+				continue;
+			};
 
 			// ADDRESS INPUT & VALIDATION
 			user.setAddress();
+			if ( !validation.Address( user.getAddress() ) )
+			{
+				rerunCount++;
+				continue;
+			};
 
 			// COURSE INPUT & VALIDATION
 			user.setCourse();
+			if ( !validation.Course( user.getCourse() ) )
+			{
+				rerunCount++;
+				continue;
+			};
 
 			// FAVE MOVIE INPUT & VALIDATION
 			user.setFavMovie();
+			if ( !validation.FavMovie( user.getFavMovie() ) )
+			{
+				rerunCount++;
+				continue;
+			};
 
 			// FAVE FOOD INPUT & VALIDATION
 			user.setFavFood();
+			if ( !validation.FavFood( user.getFavFood() ) )
+			{
+				rerunCount++;
+				continue;
+			};
 
 			// BIRTH DATE INPUT & VALIDATION
 			user.setBirthDate();
+			if ( !validation.BirthDate( user.getBirthDate() ) )
+			{
+				rerunCount++;
+				continue;
+			};
 
 			// BIRTH PLACE INPUT & VALIDATION
 			user.setBirthPlace();
+			if ( !validation.BirthPlace( user.getBirthPlace() ) )
+			{
+				rerunCount++;
+				continue;
+			};
 
 			// PREFERRED NO. OF CHILDREN INPUT & VALIDATION
 			user.setPrefChildCount();
+			if ( !validation.PrefChildCount( user.getPrefChildCount() ) )
+			{
+				rerunCount++;
+				continue;
+			};
 			
 			// ASSIGN DETAILS TO RESPECTIVE POJO
 			// ObjectMapper objectMapper = new ObjectMapper();
@@ -144,8 +186,11 @@ public class Main{
 			String reply = sc.nextLine();
 			
 			// CHECK IF USER REPLY IS GREATER THAN 30 WORDS
-			int replyWordCount = 0; // FIXME: Add code to get replyWordCount
+			String[] words = reply.split( "\\s+" ); // Split the string by whitespace
 			
+			int replyWordCount = words.length; // Count the words
+			System.out.println( "Reply word count: " + replyWordCount );	
+
 			if ( replyWordCount > 30 )
 			{
 				System.out.println( "Do you want to play a game? Yes/No" );

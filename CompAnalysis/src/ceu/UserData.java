@@ -17,118 +17,65 @@ public class UserData
   private Date birthDate;
   private String birthPlace;
   private int prefChildCount;
-  private int rerunCount;
+  // private int rerunCount;
   
   static Scanner sc = new Scanner( System.in );
-  InputValidation validation = new InputValidation();
   static boolean validated;
+  static InputValidation validation = new InputValidation();
   
   // SETTERS
   public void setfullName()
   {
-	  do {
-		  System.out.print( "Full Name: " );
+		  System.out.print( "\nFull Name: " );
 		  fullName = sc.next();
-		  
-		  validated = validation.FullName( fullName );
-		  rerunCount++;
-	  }while( !validated );
   }
 
   public void setAddress() throws IOException
   {
-	  do {
-		  System.out.println( "Address: " );
+		  System.out.println( "\nAddress: " );
 		  address = sc.nextLine();
-		 
-		  validated = validation.Address( address );
-		  
-		  rerunCount++;
-	  }while( !validated );
   }
 
   public void setCourse( )
   {
-	  do {
-		  System.out.print( "Course: " );
+		  System.out.print( "\nCourse: " );
 		  course = sc.next();
-		  
-		  validated = validation.FullName( course );
-		  
-		  rerunCount++;
-	  }while( !validated );
   }
 
   public void setFavMovie( )
   {
-	  do {
-		  System.out.print( "FavMovie: " );
+		  System.out.print( "\nFavMovie: " );
 		  favMovie = sc.next();
-		  
-		  validated = validation.FullName( favMovie );
-		  
-		  rerunCount++;
-	  }while( !validated );
   }
 
   public void setFavFood( )
   {
-	  do {
-		  System.out.print( "FavFood: " );
+		  System.out.print( "\nFavFood: " );
 		  favFood = sc.next();
-		  
-		  validated = validation.FavFood( favFood );
-		  
-		  rerunCount++;
-	  }while( !validated );
   }
 
   public void setFavNum( )
   {
-	  do {
-		  System.out.print( "FavNum: " );
+		  System.out.print( "\nFavNum: " );
 		  	favNum = sc.nextInt();
-		  
-		  validated = validation.FavNumber( favNum );
-		  
-		  rerunCount++;
-	  }while( !validated );
   }
 
   public void setBirthDate( )
   {
-	  do {
-		  System.out.print( "BirthDate: " );
+		  System.out.print( "\nBirthDate: " );
 		  // birthDate = sc.next();
-		  
-		  validated = validation.BirthDate( birthDate );
-		  
-		  rerunCount++;
-	  }while( !validated );
   }
 
   public void setBirthPlace( )
   {
-	  do {
-		  System.out.print( "BirthPlace: " );
+		  System.out.print( "\nBirthPlace: " );
 		  birthPlace = sc.next();
-		  
-		  validated = validation.BirthPlace( birthPlace );
-		  
-		  rerunCount++;
-	  }while( !validated );
   }
 
   public void setPrefChildCount( )
   {
-	  do {
-		  System.out.print( "PrefChildCount: " );
+		  System.out.print( "\nPrefChildCount: " );
 		  prefChildCount = sc.nextInt();
-		  
-		  validated = validation.PrefChildCount( prefChildCount );
-		  
-		  rerunCount++;
-	  }while( !validated );
   }
 
   // GETTERS
