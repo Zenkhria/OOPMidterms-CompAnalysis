@@ -15,7 +15,7 @@ public class Main
 	static InputValidation validation = new InputValidation();
 	static String userRegion;
 
-	public static void main( String[] args ) throws IOException
+	public static void main( String[] args ) throws IOException, InterruptedException
 	{
 		while ( true )
 		{	
@@ -30,6 +30,9 @@ public class Main
 			System.out.println( "\nPROFILYSIS: COMPREHENSIVE USER ANALYSIS SOFTWARE");
 			System.out.println( "Welcome! To start your analysis, provide the following details. ");
 
+			RaceCarSimulator raceCarSimulator = new RaceCarSimulator();
+			raceCarSimulator.RunGame();
+			
 			// CREATING NEW USER DATA OBJECT
 			UserData user = new UserData();
 
@@ -283,7 +286,8 @@ public class Main
 				
 				if ( answer.equalsIgnoreCase( "yes" ) )
 				{
-					AICar.main( args );
+					
+					
 				}
 				else if ( answer.equalsIgnoreCase( "no" ) )
 				{

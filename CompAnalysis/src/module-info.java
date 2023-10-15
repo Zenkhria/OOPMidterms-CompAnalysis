@@ -10,4 +10,5 @@ module CompAnalysis {
 	opens ceu;
 	requires com.fasterxml.jackson.databind;
 	requires com.fasterxml.jackson.annotation;
+	requires java.desktop;
 }
