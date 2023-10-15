@@ -196,13 +196,46 @@ public class Main
 			String hexadecimalValue = Integer.toHexString( favNum );
 
 			// PROVIDE PSYCH FEEDBACK BASED ON PREFCHILDNUM
-			// TODO: Place code here
+			int childCount = user.getPrefChildCount();
+			String psychEvaluation = "";
+			String diagnosis = "";
+
+			if ( childCount < 0 )
+			{
+				diagnosis = "Baby Hatred Syndrome (BHS)";
+				psychEvaluation = "they hate children and suffer from Baby Hatred Syndrome (BHS).";
+			}
+			else if ( childCount == 0 )
+			{
+				diagnosis = "Baby Allergy Syndrome (BAS)";
+				psychEvaluation = "they don't want a child and suffer from Baby Allergy Syndrome (BAS).";
+			}
+			else if ( childCount < 2 )
+			{
+				diagnosis = "Normal";
+				psychEvaluation = "they know the importance of family planning, which is completely normal. No diagnosis.";
+			}
+			else if ( childCount < 5 )
+			{
+				diagnosis = "Normal";
+				psychEvaluation = "they must be living a comfortable life.";
+			}
+			else if ( childCount < 15 )
+			{
+				diagnosis = "Minor Baby Syndrome (MiBS)";
+				psychEvaluation = "they are suffering from Minor Baby Syndrome (MiBS).";
+			}
+			else if ( childCount > 15 )
+			{
+				diagnosis = "Major Baby Syndrome (BHS)";
+				psychEvaluation = "they are suffering from Major Baby Syndrome (MaBS).";
+			}
+			System.out.println( "Diagnosis: " + diagnosis );
 
 			// PLACEHOLDER VARIABLES
 			String userZodiacSign = null;
 			String movieCategory = null;
 			String characterType = null;
-			String psychEvaluation = null;
 			
 			// COMPREHENSIVE USER ANALYSIS REPORT
 			System.out.println( "\nCOMPREHENSIVE USER ANALYSIS REPORT" );
@@ -213,7 +246,7 @@ public class Main
 										". Their favorite movie, " + user.getFavMovie() + ", falls under the " + movieCategory + "genre. "
 										+ "Their favorite movie character, " + user.getFavMovieChar() + ", is a " + characterType + " character. Their favorite number, " + user.getFavNum() + ", has a "
 										+ "binary value of " + binaryValue + ", an octal value of " + octalValue + ", and a hexadecimal value of " + hexadecimalValue + ". Based on " + user.getfullName() + "'s "
-										+ "preferred number of children ( " + user.getPrefChildCount() + " ), they " + psychEvaluation + ".";
+										+ "preferred number of children ( " + user.getPrefChildCount() + " ), " + psychEvaluation;
 			
 			// CHECK IF PARAGRAPH IS GREATER THAN 300 LETETRS
 			String reportNoWhiteSpace = compAnalysisReport.replaceAll( " ", "" );
