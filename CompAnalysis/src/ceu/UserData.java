@@ -32,7 +32,6 @@ public class UserData
   {
     System.out.print( "\nFull Name: " );
     fullName = sc.nextLine();
-
     setFirstName( fullName );
   }
 
@@ -73,18 +72,11 @@ public class UserData
 		  favFood = sc.nextLine();
   }
 
-  public void setFavNum( )
+  public void setFavNum ()
   {
-    try
-    {
 		  System.out.print( " \nFavorite Number: " );
       favNum = sc.nextInt();
       sc.nextLine();
-    }
-    catch ( Exception InputMismatchException )
-    {
-
-    }
   }
 
   public void setBirthDate()
@@ -102,15 +94,9 @@ public class UserData
 
   public void setPrefChildCount( )
   {
-    try
-    {
       System.out.print( "\nPrefChildCount: " );
 		  prefChildCount = sc.nextInt();
       sc.nextLine();
-    }
-    catch ( Exception InputMismatchException )
-    {
-    }
   }
 
   public void setAge( long age )

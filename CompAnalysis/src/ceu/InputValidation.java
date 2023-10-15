@@ -1,14 +1,7 @@
 package ceu;
-import java.io.File;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.introspect.VisibilityChecker;
-import com.fasterxml.jackson.annotation.*;
 
 public class InputValidation
 {
@@ -68,20 +61,16 @@ public class InputValidation
     }
   }
   
-  public boolean FavNumber( int number )
-  {
-    String numString = String.valueOf( number );
-    if ( numString.matches( "^[a-zA-Z]+$" ) )
-    {
-      System.out.println( "Invalid Number. Rerunning Program..." );
-      return false;
-    } 
-    else 
-    {
-      System.out.println( "FAVORITE NUMBER RECORDED." );
-      return true;
-    }
-  }
+  // public boolean FavNumber( int number )
+  // {
+  //   try 
+  //   {
+  //     System.out.println("FAVORITE NUMBER RECORDED: " + number);
+  //     return true;
+  //   } catch (NumberFormatException e) {
+  //     return false;
+  // }
+  // }
 
   public boolean FavMovieChar( String movieChar )
   {

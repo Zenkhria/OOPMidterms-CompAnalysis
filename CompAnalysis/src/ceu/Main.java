@@ -1,33 +1,31 @@
 package ceu;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main
 {
 	static Scanner sc = new Scanner( System.in );
 	static int rerunCount = 0;
+	static int seconds = 20;
 	static InputValidation validation = new InputValidation();
 	static String userRegion;
 
 	public static void main( String[] args ) throws IOException
 	{
 		while ( true )
-		{		
+		{	
+			if ( rerunCount > 0 )
+			{
+				System.out.println( "\n" );
+				Timer.run( rerunCount, seconds );
+				System.out.println( "\n" );
+			}
+	
 			// WELCOME MESSAGE
 			System.out.println( "\nPROFILYSIS: COMPREHENSIVE USER ANALYSIS SOFTWARE");
 			System.out.println( "Welcome! To start your analysis, provide the following details. ");
@@ -40,6 +38,10 @@ public class Main
 			if ( !validation.FullName( user.getfullName() ) )
 			{
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
 			};
 
@@ -48,6 +50,10 @@ public class Main
 			if ( !validation.Address( user.getAddress() ) )
 			{
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
 			};
 
@@ -56,6 +62,10 @@ public class Main
 			if ( !validation.Course( user.getCourse() ) )
 			{
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
 			};
 
@@ -64,6 +74,10 @@ public class Main
 			if ( !validation.FavMovie( user.getFavMovie() ) )
 			{
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
 			};
 
@@ -72,6 +86,10 @@ public class Main
 			if ( !validation.FavMovieChar( user.getFavMovieChar() ) )
 			{
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
 			};
 
@@ -80,22 +98,39 @@ public class Main
 			if ( !validation.FavFood( user.getFavFood() ) )
 			{
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
 			};
 
 			// FAVE NUMBER INPUT & VALIDATION
-			user.setFavNum();
-			if ( !validation.FavNumber( user.getFavNum() ) )
+			try
 			{
+				user.setFavNum();
+				System.out.println( "FAVORITE NUMBER RECORDED." );
+			}
+			catch ( Exception InputMismatchException )
+			{
+				System.out.println( "Invalid Number. Rerunning Program..." );
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
-			};
+			}
 
 			// BIRTH DATE INPUT & VALIDATION
 			user.setBirthDate();
 			if ( !validation.BirthDate( user.getBirthDate() ) )
 			{
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
 			};
 
@@ -104,16 +139,29 @@ public class Main
 			if ( !validation.BirthPlace( user.getBirthPlace() ) )
 			{
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
 			};
 
 			// PREFERRED NO. OF CHILDREN INPUT & VALIDATION
-			user.setPrefChildCount();
-			if ( !validation.PrefChildCount( user.getPrefChildCount() ) )
+			try
 			{
+				user.setPrefChildCount();
+				System.out.println( "PREFERRED NO. OF CHILDREN RECORDED." );
+			}
+			catch ( Exception InputMismatchException )
+			{
+				System.out.println( "Invalid Number. Rerunning Program..." );
 				rerunCount++;
+				if ( rerunCount > 1 )
+				{
+					seconds += 5;
+				}
 				continue;
-			};
+			}
 			
 			// EVALUATION
 			System.out.println( "\nEVALUATION");
@@ -243,7 +291,7 @@ public class Main
 				}
 				else
 				{
-					System.out.println( "Invalid Input." ); // FIXME: Not much of a priority but fix the loop for this if we have spare time.
+					System.out.println( "Invalid Input." );
 				}
 			}
 			else if ( replyWordCount == 30 )
@@ -254,7 +302,8 @@ public class Main
 			{
 				System.out.println( "\nMINESWEEPER" );
 				MineSweeper minesweeper = new MineSweeper( 8, 8, 10 );
-				minesweeper.playGame();			
+				minesweeper.playGame();	
+				sc.close();
 				System.exit( 0 );
 			}
 		}
