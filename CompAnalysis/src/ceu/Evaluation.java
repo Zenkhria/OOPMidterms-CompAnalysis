@@ -177,4 +177,27 @@ public class Evaluation
 			System.out.println( "Diagnosis: " + diagnosis );
       return psychEvaluation;
   }
+
+  public String getZodiacSign( String birthDate )
+  {
+    String[] parts = birthDate.split( "-" );
+    int month = Integer.parseInt( parts[ 1 ] );
+    int day = Integer.parseInt( parts[ 2 ] );
+
+    String[] zodiacSigns = {
+      "Capricorn", "Aquarius", "Pisces", "Aries", "Taurus", "Gemini",
+      "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius"
+    };
+
+    int[] lastDayOfEachSign = { 20, 18, 20, 19, 20, 20, 22, 22, 22, 22, 21, 21 };
+
+    int index = month - 1;
+    if ( day > lastDayOfEachSign[ index ] ) 
+    {
+        index = ( index + 1 ) % 12;
+    }
+    String zodiacSign = zodiacSigns[ index ];
+    System.out.println( "Zodiac Sign: " + zodiacSign );
+    return zodiacSigns[ index ];
+  }
 }

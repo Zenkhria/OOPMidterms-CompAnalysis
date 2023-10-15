@@ -125,6 +125,7 @@ public class Main
 			// GET ZODIAC SIGN OF THE USER
 			// TODO: Place code here
 			String userZodiacSign = null;
+			String zodiacSign = evaluate.getZodiacSign( user.getBirthDate() );
 
 			// IDENTIFY IF USER'S FAVE MOVIE IS ACTION, COMEDY, DRAMA, OR THRILLER
 			// TODO: Place code here
@@ -133,7 +134,6 @@ public class Main
 			// IDENTIFY IF USER'S FAVE MOVIE CHARACTER IS A MAIN OR SUPPORTING CHARACTER
 			// TODO: Place code here
 			String characterType = null;
-
 
 			// GET THE BINARY, OCTAL, AND HEXADECIMAL VALUES OF FAVE NUMBER
 			String binaryValue = evaluate.getFavNumBinary( user.getFavNum() );
