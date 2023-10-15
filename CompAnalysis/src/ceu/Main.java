@@ -67,6 +67,14 @@ public class Main
 				continue;
 			};
 
+			// FAVE NUMBER INPUT & VALIDATION
+			user.setFavNum();
+			if ( !validation.FavNumber( user.getFavNum() ) )
+			{
+				rerunCount++;
+				continue;
+			};
+
 			// BIRTH DATE INPUT & VALIDATION
 			user.setBirthDate();
 			if ( !validation.BirthDate( user.getBirthDate() ) )
@@ -190,10 +198,9 @@ public class Main
 			// TODO: Place code here
 
 			// GET THE BINARY, OCTAL, AND HEXADECIMAL VALUES OF FAVE NUMBER
-			int favNum = user.getFavNum();
-			String binaryValue = Integer.toBinaryString( favNum );
-			String octalValue = Integer.toOctalString( favNum );
-			String hexadecimalValue = Integer.toHexString( favNum );
+			String binaryValue = Integer.toBinaryString( user.getFavNum() );
+			String octalValue = Integer.toOctalString( user.getFavNum() );
+			String hexadecimalValue = Integer.toHexString( user.getFavNum() );
 
 			// PROVIDE PSYCH FEEDBACK BASED ON PREFCHILDNUM
 			int childCount = user.getPrefChildCount();
@@ -239,12 +246,12 @@ public class Main
 			
 			// COMPREHENSIVE USER ANALYSIS REPORT
 			System.out.println( "\nCOMPREHENSIVE USER ANALYSIS REPORT" );
-			String compAnalysisReport = user.getfullName() + " lives in " + user.getAddress() + "which can be found in " + region + 
+			String compAnalysisReport = user.getfullName() + " lives in " + user.getAddress() + " which can be found in " + region + 
 										". Their course, " +  user.getCourse() + ", is classified under CEU-Makati's " + courseCategory + 
 										" . There are " + consonantCount + " consonants, " + vowelCount + " vowels, and " + fullNameWordCount + " words in " + user.getFirstName() + "'s full name." +
-										" Their age falls under the " + ageCategory + " category. " + user.getFirstName() + "'s  zodiac sign is " + userZodiacSign + 
-										". Their favorite movie, " + user.getFavMovie() + ", falls under the " + movieCategory + "genre. "
-										+ "Their favorite movie character, " + user.getFavMovieChar() + ", is a " + characterType + " character. Their favorite number, " + user.getFavNum() + ", has a "
+										" Their age falls under the " + ageCategory + " category. " + user.getFirstName() + "'s zodiac sign is " + userZodiacSign + 
+										". Their favorite movie, " + user.getFavMovie() + ", falls under the " + movieCategory + " genre. "
+										+ "Their favorite movie character, " + user.getFavMovieChar() + ", is a " + characterType + " character. Their favorite number ( " + user.getFavNum() + " ), has a "
 										+ "binary value of " + binaryValue + ", an octal value of " + octalValue + ", and a hexadecimal value of " + hexadecimalValue + ". Based on " + user.getfullName() + "'s "
 										+ "preferred number of children ( " + user.getPrefChildCount() + " ), " + psychEvaluation;
 			
