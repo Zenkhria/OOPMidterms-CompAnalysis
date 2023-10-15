@@ -10,11 +10,12 @@ import com.fasterxml.jackson.annotation.*;
 
 public class InputValidation
 {
-  public boolean FullName(String fullName)
+  public boolean FullName( String fullName )
   {
-	  for(int i = 0 ; i < fullName.length();i++){
-			char ch = fullName.charAt(i);
-		    if (Character.isLetter(ch) || ch == ' ') 
+	  for( int i = 0 ; i < fullName.length();i++ )
+    {
+			char ch = fullName.charAt( i );
+		    if ( Character.isLetter( ch ) || ch == ' ' ) 
 		    {
 		      continue;
 		    }
@@ -23,63 +24,63 @@ public class InputValidation
 	  return true;
   }
 
-  public boolean Address(String address) throws IOException
+  public boolean Address( String address ) throws IOException
   {
     ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
-    objectMapper.setVisibility(VisibilityChecker.Std.defaultInstance().withFieldVisibility(JsonAutoDetect.Visibility.ANY));
-    File regionJsonfile = new File("src/ceu/Resource/Region.json");
-    Region region = objectMapper.readValue(regionJsonfile, Region.class);
+    objectMapper.disable( DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES );
+    objectMapper.setVisibility( VisibilityChecker.Std.defaultInstance().withFieldVisibility( JsonAutoDetect.Visibility.ANY ) );
+    File regionJsonfile = new File( "src/ceu/Resource/Region.json" );
+    Region region = objectMapper.readValue( regionJsonfile, Region.class );
     
-    System.out.println(region);
-    System.out.println(region.getCAR());
+    System.out.println( region );
+    System.out.println( region.getCAR() );
     
     return true;
   }
 
-  public boolean Course(String course)
+  public boolean Course( String course )
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean FavMovie(String movie)
+  public boolean FavMovie( String movie )
   {
     // TODO: ADD CODE 
     return true;
   }
   
-  public boolean FavNumber(int number)
+  public boolean FavNumber( int number )
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean FavMovieChar(String movieChar)
+  public boolean FavMovieChar( String movieChar )
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean FavFood(String food)
+  public boolean FavFood( String food )
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean BirthDate(Date birthDate)
+  public boolean BirthDate( Date birthDate )
   {
     // TODO: ADD CODE HER
     return true;
   }
 
-  public boolean BirthPlace(String birthPlace)
+  public boolean BirthPlace( String birthPlace )
   {
     // TODO: ADD CODE HERE
     return true;
   }
 
-  public boolean PrefChildCount(int prefChildCount)
+  public boolean PrefChildCount( int prefChildCount )
   {
     // TODO: ADD CODE HERE
     return true;

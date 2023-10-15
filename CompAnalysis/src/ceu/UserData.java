@@ -99,7 +99,7 @@ public class UserData
   {
 	  do {
 		  System.out.print( "BirthDate: " );
-		  birthDate = sc.next();
+		  // birthDate = sc.next();
 		  
 		  validated = validation.BirthDate( birthDate );
 		  

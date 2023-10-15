@@ -114,7 +114,6 @@ public class Main{
 			String characterType = null;
 			String psychEvaluation = null;
 			
-			
 			// COMPREHENSIVE USER ANALYSIS REPORT
 			System.out.println( "COMPREHENSIVE USER ANALYSIS REPORT" );
 			String compAnalysisReport = user.getfullName() + " lives in " + user.getAddress() + "which can be found in " + region + 
