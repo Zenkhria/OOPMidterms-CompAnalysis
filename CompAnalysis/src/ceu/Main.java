@@ -16,7 +16,7 @@ public class Main
 		{		
 			// WELCOME MESSAGE
 			System.out.println( "\nPROFILYSIS: COMPREHENSIVE USER ANALYSIS SOFTWARE");
-			System.out.println( "\nWelcome! To start your analysis, provide the following details. ");
+			System.out.println( "Welcome! To start your analysis, provide the following details. ");
 
 			// CREATING NEW USER DATA OBJECT
 			UserData user = new UserData();

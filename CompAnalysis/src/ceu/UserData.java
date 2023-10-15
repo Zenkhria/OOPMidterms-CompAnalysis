@@ -28,54 +28,57 @@ public class UserData
   {
 		  System.out.print( "\nFull Name: " );
 		  fullName = sc.next();
+      sc.nextLine();
   }
 
   public void setAddress() throws IOException
   {
-		  System.out.println( "\nAddress: " );
+		  System.out.print( "\nAddress: " );
 		  address = sc.nextLine();
   }
 
   public void setCourse( )
   {
 		  System.out.print( "\nCourse: " );
-		  course = sc.next();
+		  course = sc.nextLine();
   }
 
   public void setFavMovie( )
   {
 		  System.out.print( "\nFavMovie: " );
-		  favMovie = sc.next();
+		  favMovie = sc.nextLine();
   }
 
   public void setFavFood( )
   {
 		  System.out.print( "\nFavFood: " );
-		  favFood = sc.next();
+		  favFood = sc.nextLine();
   }
 
   public void setFavNum( )
   {
 		  System.out.print( "\nFavNum: " );
-		  	favNum = sc.nextInt();
+      favNum = sc.nextInt();
+      sc.nextLine();
   }
 
   public void setBirthDate( )
   {
-		  System.out.print( "\nBirthDate: " );
-		  // birthDate = sc.next();
+		  System.out.print( "\nBirthDate (YYYY-mm-dd): " );
+		  String birthDateString = sc.nextLine();
   }
 
   public void setBirthPlace( )
   {
 		  System.out.print( "\nBirthPlace: " );
-		  birthPlace = sc.next();
+		  birthPlace = sc.nextLine();
   }
 
   public void setPrefChildCount( )
   {
 		  System.out.print( "\nPrefChildCount: " );
 		  prefChildCount = sc.nextInt();
+      sc.nextLine()
   }
 
   // GETTERS
