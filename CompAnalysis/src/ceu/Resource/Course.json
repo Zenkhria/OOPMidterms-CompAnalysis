@@ -1,0 +1,30 @@
+{
+  "Accountancy & Management Department": [
+    "Accountancy", "Legal Management", "Business Administration"
+  ],
+  "Computer Science and Information Technology Department": [
+    "Computer Science", "Information Technology", "CS", "IT"
+  ],
+  "Dentistry Department": [
+    "Dentistry"
+  ],
+  "Hospitality Management Department": [
+    "International Hospitality Management with Specialization in Hotel, Restaurant and Culinary Operations", 
+    "International Hospitality Management with Specialization in Cruise and Integrated Resort Operations"
+  ],
+  "Medical Technology Department": [
+    "Medical Technology"
+  ],
+  "Nursing Department": [
+    "Nursing"
+  ],
+  "Pharmacy Department": [
+    "Pharmacy", "Clinical Pharmacy"
+  ],
+  "Psychology Department": [
+    "Pscyhology"
+  ],
+  "Tourism Management Department": [
+    "International Tourism and Travel Management"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "National Capital Region (NCR)": [
+    "Manila", "Quezon City", "Makati", "Caloocan", "Pasig", "Taguig", "Pasay", "Muntinlupa", "Las Piñas"
+  ],
+  "Cordillera Administrative Region (CAR)": [
+    "Baguio", "Benguet", "Ifugao", "Kalinga", "Apayao", "Abra"
+  ],
+  "Ilocos Region (Region I)": [
+    "Laoag", "Vigan", "San Fernando (La Union)", "Alaminos (Pangasinan)", "Dagupan", "Urdaneta", "Batac", "Candon"
+  ],
+  "Cagayan Valley (Region II)": [
+    "Tuguegarao", "Isabela City", "Ilagan", "Santiago", "Cauayan", "Tabuk"
+  ],
+  "Central Luzon (Region III)": [
+    "Angeles", "San Fernando (Pampanga)", "Olongapo", "Balanga", "Malolos", "Cabanatuan", "Tarlac City", "Mabalacat", "Gapan", "Meycauayan"
+  ],
+  "Calabarzon (Region IV-A)": [
+    "Batangas City", "Cavite City", "Santa Rosa", "Lipa", "Lucena", "Calamba", "San Pablo", "Tanauan", "Biñan", "Trece Martires"
+  ],
+  "Mimaropa (Region IV-B)": [
+    "Puerto Princesa", "Calapan", "San Jose", "Odiongan", "Roxas (Palawan)"
+  ],
+  "Bicol Region (Region V)": [
+    "Legazpi", "Naga", "Ligao", "Sorsogon City", "Tabaco", "Iriga"
+  ],
+  "Western Visayas (Region VI)": [
+    "Iloilo City", "Bacolod", "Roxas City", "Passi", "San Carlos (Negros Occidental)"
+  ],
+  "Central Visayas (Region VII)": [
+    "Cebu City", "Mandaue", "Lapu-Lapu", "Tagbilaran", "Toledo"
+  ]
+}
