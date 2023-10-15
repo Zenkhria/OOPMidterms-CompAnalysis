@@ -14,15 +14,15 @@ public class InputValidation
 {
   public boolean FullName( String fullName )
   {
-    if ( !fullName.matches( ".*\\d+.*" ) && !fullName.matches( ".*[^aeiouAEIOU.]{4,}.*" ) && !fullName.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
-    {
-      System.out.println( "NAME RECORDED." );
-      return true;
-    } 
-    else 
+    if ( fullName.matches( ".*\\d+.*" ) && fullName.matches( ".*[^aeiouAEIOU]{4,}.*" ) && fullName.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Name. Rerunning Program..." );
       return false;
+    } 
+    else 
+    {
+      System.out.println( "NAME RECORDED." );
+      return true;
     }
   }
 
@@ -38,43 +38,43 @@ public class InputValidation
     // System.out.println( region.getCAR() );
     
     // return true;
-    if ( !address.matches( ".*\\d+.*" ) && !address.matches( ".*[^aeiouAEIOU]{4,}.*" ) && !address.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
-    {
-      System.out.println( "ADDRESS RECORDED." );
-      return true;
-    } 
-    else 
+    if ( address.matches( ".*\\d+.*" ) && address.matches( ".*[^aeiouAEIOU]{4,}.*" ) && address.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Address. Rerunning Program..." );
       return false;
+    } 
+    else 
+    {
+      System.out.println( "ADDRESS RECORDED." );
+      return true;
     }
   }
 
   public boolean Course( String course )
   {
-    if ( !course.matches( ".*\\d+.*" ) && !course.matches( ".*[^aeiouAEIOU]{4,}.*" ) && !course.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
-    {
-      System.out.println( "COURSE RECORDED." );
-      return true;
-    } 
-    else 
+    if ( course.matches( ".*\\d+.*" ) && course.matches( ".*[^aeiouAEIOU]{4,}.*" ) && course.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Course. Rerunning Program..." );
       return false;
+    } 
+    else 
+    {
+      System.out.println( "COURSE RECORDED." );
+      return true;
     }
   }
 
   public boolean FavMovie( String movie )
   {
-    if ( !movie.matches( ".*[^aeiouAEIOU]{4,}.*" ) && !movie.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
-    {
-      System.out.println( "FAVORITE MOVIE RECORDED." );
-      return true;
-    } 
-    else 
+    if ( movie.matches(".*[^aeiouAEIOU&:-]{4,}.*") && movie.matches(".*[aeiouAEIOU&:-]{3,}.*") ) 
     {
       System.out.println( "Invalid Movie. Rerunning Program..." );
       return false;
+    } 
+    else 
+    {
+      System.out.println( "FAVORITE MOVIE RECORDED." );
+      return true;
     }
   }
   
@@ -95,35 +95,34 @@ public class InputValidation
 
   public boolean FavMovieChar( String movieChar )
   {
-    if ( !movieChar.matches( ".*[^aeiouAEIOU]{4,}.*" ) && !movieChar.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
-    {
-      System.out.println( "FAVORITE MOVIE CHARACTER RECORDED." );
-      return true;
-    } 
-    else 
+    if ( movieChar.matches( ".*[^aeiouAEIOU]{4,}.*" ) && movieChar.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Movie Character. Rerunning Program..." );
       return false;
+    } 
+    else 
+    {
+      System.out.println( "FAVORITE MOVIE CHARACTER RECORDED." );
+      return true;
     }
   }
 
   public boolean FavFood( String food )
   {
-    if ( !food.matches( ".*\\d+.*" ) && !food.matches( ".*[^aeiouAEIOU.]{4,}.*" ) && !food.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
-    {
-      System.out.println( "FAVORITE FOOD RECORDED." );
-      return true;
-    } 
-    else 
+    if ( food.matches( ".*\\d+.*" ) && food.matches( ".*[^aeiouAEIOU.]{4,}.*" ) && food.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Food. Rerunning Program..." );
       return false;
+    } 
+    else 
+    {
+      System.out.println( "FAVORITE FOOD RECORDED." );
+      return true;
     }
   }
 
   public boolean BirthDate( String birthDate )
   {
-    // TODO: ADD CODE HERE
     if ( birthDate.matches( "\\d{4}-\\d{2}-\\d{2}" ) && isValidAge( birthDate ) )
     {
       System.out.println( "BIRTH DATE RECORDED." );
@@ -158,15 +157,15 @@ public class InputValidation
 
   public boolean BirthPlace( String birthPlace )
   {
-    if ( !birthPlace.matches( ".*\\d+.*" ) && !birthPlace.matches( ".*[^aeiouAEIOU.]{4,}.*" ) && !birthPlace.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
-    {
-      System.out.println( "BIRTH PLACE RECORDED." );
-      return true;
-    } 
-    else 
+    if ( birthPlace.matches( ".*\\d+.*" ) && birthPlace.matches( ".*[^aeiouAEIOU.]{4,}.*" ) && birthPlace.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Birth Place. Rerunning Program..." );
       return false;
+    } 
+    else 
+    {
+      System.out.println( "BIRTH PLACE RECORDED." );
+      return true;
     }
   }
 

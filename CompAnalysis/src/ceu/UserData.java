@@ -62,11 +62,11 @@ public class UserData
       sc.nextLine();
   }
 
-  public void setBirthDate( )
+  public void setBirthDate()
   {
 		  System.out.print( "\nBirthDate (YYYY-mm-dd): " );
 		  String birthDateString = sc.nextLine();
-
+      this.birthDate = birthDateString;
   }
 
   public void setBirthPlace( )
