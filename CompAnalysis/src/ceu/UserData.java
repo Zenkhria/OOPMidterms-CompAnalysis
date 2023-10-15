@@ -75,9 +75,16 @@ public class UserData
 
   public void setFavNum( )
   {
+    try
+    {
 		  System.out.print( " \nFavorite Number: " );
       favNum = sc.nextInt();
       sc.nextLine();
+    }
+    catch ( Exception InputMismatchException )
+    {
+
+    }
   }
 
   public void setBirthDate()
@@ -91,32 +98,24 @@ public class UserData
   {
 		  System.out.print( "\nBirthPlace: " );
 		  birthPlace = sc.nextLine();
-      // FIXME: Convert String to Date and check if user's age is valid.
-
   }
 
   public void setPrefChildCount( )
   {
-		  System.out.print( "\nPrefChildCount: " );
-		  prefChildCount = sc.nextInt();
-      sc.nextLine();
-  }
-
-  public void setAge()
-  {
-    Date currentDate = new Date();
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
     try
     {
-      Date userBirthDate = dateFormat.parse( birthDate );
-      long ageInMillis = currentDate.getTime() - userBirthDate.getTime();
-      long years = ageInMillis / ( 365 * 24 * 60 * 60 * 1000L );
-      this.age = years;
+      System.out.print( "\nPrefChildCount: " );
+		  prefChildCount = sc.nextInt();
+      sc.nextLine();
     }
-    catch ( ParseException e ) 
+    catch ( Exception InputMismatchException )
     {
     }
+  }
+
+  public void setAge( long age )
+  {
+    this.age = age;
   }
 
   // GETTERS

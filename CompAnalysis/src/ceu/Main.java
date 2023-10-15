@@ -4,8 +4,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -16,7 +22,7 @@ public class Main
 	static Scanner sc = new Scanner( System.in );
 	static int rerunCount = 0;
 	static InputValidation validation = new InputValidation();
-	static String region;
+	static String userRegion;
 
 	public static void main( String[] args ) throws IOException
 	{
@@ -114,13 +120,10 @@ public class Main
 			Evaluation evaluate = new Evaluation();
 
 			// GET THE REGION OF USER'S ADDRESS
-			// FIXME: Can't run code (access to file denied). Therefore, can't test. Please test.
-			evaluate.getRegion( region, user );
+			userRegion = evaluate.getRegion( user.getAddress() );
 			
 			// GET THE CLASSIFICATION OF USER'S COURSE
-			// FIXME: Add more code here
-			String courseCategory = null; // <- use this variable 
-			System.out.println( "Course Category: " + courseCategory );
+			String courseCategory = evaluate.getCourseCategory( user.getCourse() );
 
 			// GET NO. OF CONSONANTS & VOWELS IN USER'S FULL NAME
 			int consonantCount = evaluate.fullNameConsonantCount( user.getfullName() );
@@ -129,8 +132,25 @@ public class Main
 			// GET NO. OF WORDS IN USER'S FULL NAME
 			int wordCount = evaluate.fullNameWordCount( user.getfullName() );
 			
-			// CHECK IF USER'S AGE IS SENIOR, MID, TEENAGER, CHILD, OR BABY
-			String ageCategory = evaluate.getAgeCategory( user );
+			// GET USER'S AGE
+			Date currentDate = new Date();
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	
+			long userAge = 0;
+			try
+			{
+				Date userBirthDate = dateFormat.parse( user.getBirthDate() );
+				long ageInMillis = currentDate.getTime() - userBirthDate.getTime();
+				long years = ageInMillis / ( 365 * 24 * 60 * 60 * 1000L );
+				user.setAge( years );
+			}
+			catch ( ParseException e ) 
+			{
+			}
+
+			// CHECK IF USER'S AGE IS SENIOR, MID, TEENAGER, CHILD, OR 
+			System.out.println( "Age: " + user.getAge() );
+			String ageCategory = evaluate.getAgeCategory( user.getAge() );
 
 			// GET ZODIAC SIGN OF THE USER
 			String zodiacSign = evaluate.getZodiacSign( user.getBirthDate() );
@@ -172,7 +192,7 @@ public class Main
 			
 			// COMPREHENSIVE USER ANALYSIS REPORT
 			System.out.println( "\nCOMPREHENSIVE USER ANALYSIS REPORT" );
-			String compAnalysisReport = user.getfullName() + " lives in " + user.getAddress() + " which can be found in " + region + 
+			String compAnalysisReport = user.getfullName() + " lives in " + user.getAddress() + " which can be found in " + userRegion + 
 										". Their course, " +  user.getCourse() + ", is classified under CEU-Makati's " + courseCategory + 
 										" . There are " + consonantCount + " consonants, " + vowelCount + " vowels, and " + wordCount + " words in " + user.getFirstName() + "'s full name." +
 										" Their age falls under the " + ageCategory + " category. " + user.getFirstName() + "'s zodiac sign is " + zodiacSign + 
@@ -235,6 +255,7 @@ public class Main
 				System.out.println( "\nMINESWEEPER" );
 				MineSweeper minesweeper = new MineSweeper( 8, 8, 10 );
 				minesweeper.playGame();			
+				System.exit( 0 );
 			}
 		}
 	}

@@ -14,7 +14,7 @@ public class InputValidation
 {
   public boolean FullName( String fullName )
   {
-    if ( fullName.matches( ".*\\d+.*" ) && fullName.matches( ".*[^aeiouAEIOU]{4,}.*" ) && fullName.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
+    if ( fullName.matches( ".*\\d+.*" ) || fullName.matches( ".*[^aeiouAEIOU\\s]{4,}.*" ) || fullName.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Name. Rerunning Program..." );
       return false;
@@ -26,19 +26,9 @@ public class InputValidation
     }
   }
 
-  public boolean Address( String address ) throws IOException
+  public boolean Address( String address )
   {
-    // ObjectMapper objectMapper = new ObjectMapper();
-    // objectMapper.disable( DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES );
-    // objectMapper.setVisibility( VisibilityChecker.Std.defaultInstance().withFieldVisibility( JsonAutoDetect.Visibility.ANY ) );
-    // File regionJsonfile = new File( "src/ceu/Resource/Region.json" );
-    // Region region = objectMapper.readValue( regionJsonfile, Region.class );
-    
-    // System.out.println( region );
-    // System.out.println( region.getCAR() );
-    
-    // return true;
-    if ( address.matches( ".*\\d+.*" ) && address.matches( ".*[^aeiouAEIOU]{4,}.*" ) && address.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
+    if ( address.matches( ".*\\d+.*" ) || address.matches( ".*[^aeiouAEIOU\\s]{4,}.*" ) || address.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Address. Rerunning Program..." );
       return false;
@@ -52,7 +42,7 @@ public class InputValidation
 
   public boolean Course( String course )
   {
-    if ( course.matches( ".*\\d+.*" ) && course.matches( ".*[^aeiouAEIOU]{4,}.*" ) && course.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
+    if ( course.matches( ".*\\d+.*" ) || course.matches( ".*[^aeiouAEIOU\\s]{4,}.*" ) || course.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Course. Rerunning Program..." );
       return false;
@@ -66,7 +56,7 @@ public class InputValidation
 
   public boolean FavMovie( String movie )
   {
-    if ( movie.matches(".*[^aeiouAEIOU&:-]{4,}.*") && movie.matches(".*[aeiouAEIOU&:-]{3,}.*") ) 
+    if ( movie.matches(".*[^aeiouAEIOU&:-]{4,}.*") || movie.matches(".*[aeiouAEIOU&:-]{3,}.*") ) 
     {
       System.out.println( "Invalid Movie. Rerunning Program..." );
       return false;
@@ -95,7 +85,7 @@ public class InputValidation
 
   public boolean FavMovieChar( String movieChar )
   {
-    if ( movieChar.matches( ".*[^aeiouAEIOU]{4,}.*" ) && movieChar.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
+    if ( movieChar.matches( ".*[^aeiouAEIOU\\s]{4,}.*" ) || movieChar.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Movie Character. Rerunning Program..." );
       return false;
@@ -109,7 +99,7 @@ public class InputValidation
 
   public boolean FavFood( String food )
   {
-    if ( food.matches( ".*\\d+.*" ) && food.matches( ".*[^aeiouAEIOU.]{4,}.*" ) && food.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
+    if ( food.matches( ".*\\d+.*" ) || food.matches( ".*[^aeiouAEIOU\\s]{4,}.*" ) || food.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Food. Rerunning Program..." );
       return false;
@@ -157,7 +147,7 @@ public class InputValidation
 
   public boolean BirthPlace( String birthPlace )
   {
-    if ( birthPlace.matches( ".*\\d+.*" ) && birthPlace.matches( ".*[^aeiouAEIOU.]{4,}.*" ) && birthPlace.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
+    if ( birthPlace.matches( ".*\\d+.*" ) || birthPlace.matches( ".*[^aeiouAEIOU.]{4,}.*" ) || birthPlace.matches( ".*[aeiouAEIOU]{3,}.*" ) ) 
     {
       System.out.println( "Invalid Birth Place. Rerunning Program..." );
       return false;

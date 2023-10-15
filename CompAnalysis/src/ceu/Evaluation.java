@@ -1,52 +1,129 @@
 package ceu;
 
-import java.io.File; 
+import java.io.File;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Evaluation 
 {
-  public void getRegion( String region, UserData user )
+  public String getRegion( String address )
   {
-    try 
+      Map<String, List<String>> regionCityMap = new HashMap<>();
+
+			// National Capital Region (NCR)
+			List<String> ncrCities = Arrays.asList(
+					"Manila", "Quezon City", "Makati", "Caloocan", "Pasig", "Taguig", "Pasay", "Muntinlupa", "Las Piñas"
+			);
+			regionCityMap.put( "National Capital Region (NCR)", ncrCities );
+
+			// Cordillera Administrative Region (CAR)
+			List<String> carCities = Arrays.asList(
+					"Baguio", "Benguet", "Ifugao", "Kalinga", "Apayao", "Abra"
+			);
+			regionCityMap.put( "Cordillera Administrative Region (CAR)", carCities );
+			
+			// Cagayan Valley (Region II)
+			List<String> regionIICities = Arrays.asList(
+					"Tuguegarao", "Isabela City", "Ilagan", "Santiago", "Cauayan", "Tabuk"
+			);
+			regionCityMap.put( "Cagayan Valley (Region II)", regionIICities );
+
+			// Central Luzon (Region III)
+			List<String> regionIIICities = Arrays.asList(
+			"Angeles", "San Fernando (Pampanga)", "Olongapo", "Balanga", "Malolos", "Cabanatuan", "Tarlac City", "Mabalacat", "Gapan", "Meycauayan"
+			);
+			regionCityMap.put( "Central Luzon (Region III)", regionIIICities );
+
+			// Calabarzon (Region IV-A)
+			List<String> regionIVACities = Arrays.asList(
+			"Batangas City", "Cavite City", "Santa Rosa", "Lipa", "Lucena", "Calamba", "San Pablo", "Tanauan", "Biñan", "Trece Martires"
+			);
+			regionCityMap.put( "Calabarzon (Region IV-A)", regionIVACities );
+
+			// Mimaropa (Region IV-B)
+			List<String> regionIVBCities = Arrays.asList(
+			"Puerto Princesa", "Calapan", "San Jose", "Odiongan", "Roxas (Palawan)"
+			);
+			regionCityMap.put( "Mimaropa (Region IV-B)", regionIVBCities );
+
+			// Bicol Region (Region V)
+			List<String> regionVCities = Arrays.asList(
+			"Legazpi", "Naga", "Ligao", "Sorsogon City", "Tabaco", "Iriga"
+			);
+			regionCityMap.put( "Bicol Region (Region V)", regionVCities );
+
+			// Western Visayas (Region VI)
+			List<String> regionVICities = Arrays.asList(
+				"Iloilo City", "Bacolod", "Roxas City", "Passi", "San Carlos (Negros Occidental)"
+			);
+			regionCityMap.put( "Western Visayas (Region VI)", regionVICities );
+
+			// Central Visayas (Region VII)
+			List<String> regionVIICities = Arrays.asList(
+				"Cebu City", "Mandaue", "Lapu-Lapu", "Tagbilaran", "Toledo"
+			);
+			regionCityMap.put( "Central Visayas (Region VII)", regionVIICities );
+
+      String region = "";
+			for ( Map.Entry<String, List<String>> entry : regionCityMap.entrySet() ) 
+			{
+				region = entry.getKey();
+				List<String> cities = entry.getValue();
+
+				for ( String city : cities ) 
+				{
+						if ( address.equalsIgnoreCase( city ) )
+						{
+							System.out.println( "Region of City Address: " + region );
+						}
+				}
+      }
+      return region;
+  }
+
+  public String getCourseCategory( String userCourse )
+  {
+    Map<String, List<String>> courseCategoryMap = new HashMap<>();
+
+    // Accountancy & Management Department
+    List<String> accountancy = Arrays.asList(
+      "Accountancy", "Legal Management", "Business Administration"
+    );
+    courseCategoryMap.put( "Accountancy & Management Department", accountancy );
+
+    // Computer Science and Information Technology Department
+    List<String> csit = Arrays.asList(
+      "Computer Science", "Information Technology", "CS", "IT"
+    );
+    courseCategoryMap.put( "Computer Science and Information Technology Department", csit );
+
+    String courseCategory = "";
+    for ( Map.Entry<String, List<String>> entry : courseCategoryMap.entrySet() ) 
     {
-      ObjectMapper objectMapper = new ObjectMapper();
-      JsonNode rootNode = objectMapper.readTree( new File( "C:\\Users\\user\\Favorites\\Downloads\\Compressed\\Resource" ) );
+      courseCategory = entry.getKey();
+      List<String> courses = entry.getValue();
 
-      for ( JsonNode regionNode : rootNode ) 
+      for ( String course : courses ) 
       {
-        region = regionNode.get( "regionName" ).asText();
-        JsonNode citiesNode = regionNode.get( "cities" );
-
-        if ( citiesNode.isArray() && citiesNode.elements().hasNext() ) 
+        if ( course.equalsIgnoreCase( userCourse ) )
         {
-          for ( JsonNode cityNode : citiesNode ) 
-          {
-            String city = cityNode.asText();
-            if ( city.equals( user.getAddress() ) ) 
-            {
-              System.out.println( "Address Region: " + region );
-            }
-            else
-            {
-              System.out.println( "Address Region: Not Found" );
-            }
-          }
+          System.out.println( "Course Category: " + courseCategory );
         }
       }
-    } 
-    catch ( Exception e ) 
-    {
-        e.printStackTrace();
     }
+    return courseCategory;
   }
 
   public int fullNameConsonantCount( String fullName )
   {
     String fullNameCheck = fullName.toLowerCase();
     fullNameCheck = fullNameCheck.replaceAll( " ", "" );
-    fullNameCheck = fullNameCheck.replaceAll( ".", "" );
+    fullNameCheck = fullNameCheck.replaceAll( "\\.", "" );
     
     int consonantCount = 0;
     
@@ -66,7 +143,7 @@ public class Evaluation
   {
     String fullNameCheck = fullName.toLowerCase();
     fullNameCheck = fullNameCheck.replaceAll( " ", "" );
-    fullNameCheck = fullNameCheck.replaceAll( ".", "" );
+    fullNameCheck = fullNameCheck.replaceAll( "\\.", "" );
     
     int  vowelCount = 0;
     
@@ -90,23 +167,22 @@ public class Evaluation
     return fullNameWordCount;
   }
 
-  public String getAgeCategory( UserData user )
+  public String getAgeCategory( long age )
   {
-    String ageCategory; // FIXME: My birthday is on Oct 19, 2003 but I get categorized as a Child.
-    long age = user.getAge();
+    String ageCategory; 
     if ( age > 0 && age <= 2 )
     {
       ageCategory = "Baby";
     }
-    else if ( age <= 12 )
+    else if ( age > 2 && age <= 12 )
     {
       ageCategory = "Child";
     }
-    else if ( age <= 19 )
+    else if ( age> 12 && age <= 19 )
     {
       ageCategory = "Teenager";
     }
-    else if ( age < 65 )
+    else if ( age > 19 && age < 65 )
     {
       ageCategory = "Mid";
     }
@@ -171,7 +247,7 @@ public class Evaluation
 			}
 			else if ( childCount > 15 )
 			{
-				diagnosis = "Major Baby Syndrome (BHS)";
+				diagnosis = "Major Baby Syndrome (MaBs)";
 				psychEvaluation = "they are suffering from Major Baby Syndrome (MaBS).";
 			}
 			System.out.println( "Diagnosis: " + diagnosis );
