@@ -155,7 +155,7 @@ public class Main{
 				
 				if ( answer.equalsIgnoreCase( "yes" ) )
 				{
-					// FIXME: Call Racing Game class.
+					AICar.main( args );
 				}
 				else if ( answer.equalsIgnoreCase( "no" ) )
 				{
