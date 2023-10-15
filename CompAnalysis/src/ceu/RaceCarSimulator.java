@@ -1,17 +1,23 @@
 package ceu;
 import java.util.Scanner;
+
+import javax.swing.JFrame;
+
 import java.util.Scanner;
 
-public class RaceCarSimulator {
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		Race race = new Race();	
-		System.out.print("");
+public class RaceCarSimulator extends JFrame 
+{	
+	public RaceCarSimulator()
+	{	
+	}
+	
+	public void RunGame() throws InterruptedException {
+		Race race = new Race();		
 		
-		int distance = scan.nextInt();		
-		race.setDistance(distance);
-		
-		String carState = scan.next();
-		race.setCarState(carState);
+        JFrame app=new JFrame();
+        app.add(race);
+        app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        app.setSize(500, race.getDistance());
+        app.setVisible(true);
 	}
 }
