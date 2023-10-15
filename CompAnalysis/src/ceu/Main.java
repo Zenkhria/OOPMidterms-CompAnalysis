@@ -99,40 +99,13 @@ public class Main
 				continue;
 			};
 			
+			// EVALUATION
 			System.out.println( "\nEVALUATION");
+			Evaluation evaluate = new Evaluation();
+
 			// GET THE REGION OF USER'S ADDRESS
 			// FIXME: Can't run code (access to file denied). Therefore, can't test. Please test.
-			try 
-			{
-				ObjectMapper objectMapper = new ObjectMapper();
-				JsonNode rootNode = objectMapper.readTree( new File( "C:\\Users\\user\\Favorites\\Downloads\\Compressed\\Resource" ) );
-
-				for ( JsonNode regionNode : rootNode ) 
-				{
-					region = regionNode.get( "regionName" ).asText();
-					JsonNode citiesNode = regionNode.get( "cities" );
-
-					if ( citiesNode.isArray() && citiesNode.elements().hasNext() ) 
-					{
-						for ( JsonNode cityNode : citiesNode ) 
-						{
-							String city = cityNode.asText();
-							if ( city.equals( user.getAddress() ) ) 
-							{
-								System.out.println( "Address Region: " + region );
-							}
-							else
-							{
-								System.out.println( "Address Region: Not Found" );
-							}
-						}
-					}
-				}
-			} 
-			catch ( Exception e ) 
-			{
-					e.printStackTrace();
-			}
+			evaluate.getRegion( region, user );
 			
 			// GET THE CLASSIFICATION OF USER'S COURSE
 			// FIXME: Add more code here
@@ -140,128 +113,47 @@ public class Main
 			System.out.println( "Course Category: " + courseCategory );
 
 			// GET NO. OF CONSONANTS & VOWELS IN USER'S FULL NAME
-			String fullNameCheck = user.getfullName().toLowerCase();
-			fullNameCheck = fullNameCheck.replaceAll( " ", "" );
-			fullNameCheck = fullNameCheck.replaceAll( ".", "" );
-			
-			int consonantCount = 0;
-			int  vowelCount = 0;
-			
-			for ( char letter : fullNameCheck.toCharArray() )
-			{
-				String letterString = Character.toString( letter );
-				if ( letterString.matches( "[b-df-hj-np-tv-z]" ) )
-				{
-					consonantCount++;
-				}
-				else if ( letterString.matches( "[aeiou]" ) )
-				{
-					vowelCount++;
-				}
-			}
-			System.out.println( "No. of Consonants in Full Name: " + consonantCount );
-			System.out.println( "No. of Vowels in Full Name: " + vowelCount );
+			int consonantCount = evaluate.fullNameConsonantCount( user.getfullName() );
+			int vowelCount = evaluate.fullNameVowelCount( user.getfullName() );
 
 			// GET NO. OF WORDS IN USER'S FULL NAME
-			String fullName = user.getfullName();
-			String[] wordsInFullName = fullName.split( "\\s+" );
-			int fullNameWordCount = wordsInFullName.length;
-			System.out.println( "No. of Words in Full Name: " + fullNameWordCount );
+			int wordCount = evaluate.fullNameWordCount( user.getfullName() );
 			
 			// CHECK IF USER'S AGE IS SENIOR, MID, TEENAGER, CHILD, OR BABY
-			String ageCategory; // FIXME: My birthday is on Oct 19, 2003 but I get categorized as a Child.
-			long age = user.getAge();
-			if ( age > 0 && age <= 2 )
-			{
-				ageCategory = "Baby";
-			}
-			else if ( age <= 12 )
-			{
-				ageCategory = "Child";
-			}
-			else if ( age <= 19 )
-			{
-				ageCategory = "Teenager";
-			}
-			else if ( age < 65 )
-			{
-				ageCategory = "Mid";
-			}
-			else
-			{
-				ageCategory = "Senior";
-			}
-			System.out.println( "Age Category: " + ageCategory );
+			String ageCategory = evaluate.getAgeCategory( user );
 
 			// GET ZODIAC SIGN OF THE USER
 			// TODO: Place code here
+			String userZodiacSign = null;
 
 			// IDENTIFY IF USER'S FAVE MOVIE IS ACTION, COMEDY, DRAMA, OR THRILLER
 			// TODO: Place code here
+			String movieCategory = null;
 
 			// IDENTIFY IF USER'S FAVE MOVIE CHARACTER IS A MAIN OR SUPPORTING CHARACTER
 			// TODO: Place code here
+			String characterType = null;
+
 
 			// GET THE BINARY, OCTAL, AND HEXADECIMAL VALUES OF FAVE NUMBER
-			String binaryValue = Integer.toBinaryString( user.getFavNum() );
-			System.out.println( "Binary Value of FavNum: " + binaryValue );
-			String octalValue = Integer.toOctalString( user.getFavNum() );
-			System.out.println( "Octal Value of FavNum: " + octalValue );
-			String hexadecimalValue = Integer.toHexString( user.getFavNum() );
-			System.out.println( "Hexadecimal Value of FavNum: " + hexadecimalValue );
+			String binaryValue = evaluate.getFavNumBinary( user.getFavNum() );
+			String octalValue = evaluate.getFavNumOctal( user.getFavNum() );
+			String hexValue = evaluate.getFavNumHex( user.getFavNum() );
 
 			// PROVIDE PSYCH FEEDBACK BASED ON PREFCHILDNUM
-			int childCount = user.getPrefChildCount();
-			String psychEvaluation = "";
-			String diagnosis = "";
-
-			if ( childCount < 0 )
-			{
-				diagnosis = "Baby Hatred Syndrome (BHS)";
-				psychEvaluation = "they hate children and suffer from Baby Hatred Syndrome (BHS).";
-			}
-			else if ( childCount == 0 )
-			{
-				diagnosis = "Baby Allergy Syndrome (BAS)";
-				psychEvaluation = "they don't want a child and suffer from Baby Allergy Syndrome (BAS).";
-			}
-			else if ( childCount < 2 )
-			{
-				diagnosis = "Normal";
-				psychEvaluation = "they know the importance of family planning, which is completely normal. No diagnosis.";
-			}
-			else if ( childCount < 5 )
-			{
-				diagnosis = "Normal";
-				psychEvaluation = "they must be living a comfortable life.";
-			}
-			else if ( childCount < 15 )
-			{
-				diagnosis = "Minor Baby Syndrome (MiBS)";
-				psychEvaluation = "they are suffering from Minor Baby Syndrome (MiBS).";
-			}
-			else if ( childCount > 15 )
-			{
-				diagnosis = "Major Baby Syndrome (BHS)";
-				psychEvaluation = "they are suffering from Major Baby Syndrome (MaBS).";
-			}
-			System.out.println( "Diagnosis: " + diagnosis );
-
-			// PLACEHOLDER VARIABLES
-			String userZodiacSign = null;
-			String movieCategory = null;
-			String characterType = null;
+			evaluate.getPsychEval( user.getPrefChildCount() );
+			String psychEval = evaluate.getPsychEval( user.getPrefChildCount() );
 			
 			// COMPREHENSIVE USER ANALYSIS REPORT
 			System.out.println( "\nCOMPREHENSIVE USER ANALYSIS REPORT" );
 			String compAnalysisReport = user.getfullName() + " lives in " + user.getAddress() + " which can be found in " + region + 
 										". Their course, " +  user.getCourse() + ", is classified under CEU-Makati's " + courseCategory + 
-										" . There are " + consonantCount + " consonants, " + vowelCount + " vowels, and " + fullNameWordCount + " words in " + user.getFirstName() + "'s full name." +
+										" . There are " + consonantCount + " consonants, " + vowelCount + " vowels, and " + wordCount + " words in " + user.getFirstName() + "'s full name." +
 										" Their age falls under the " + ageCategory + " category. " + user.getFirstName() + "'s zodiac sign is " + userZodiacSign + 
 										". Their favorite movie, " + user.getFavMovie() + ", falls under the " + movieCategory + " genre. "
 										+ "Their favorite movie character, " + user.getFavMovieChar() + ", is a " + characterType + " character. Their favorite number ( " + user.getFavNum() + " ), has a "
-										+ "binary value of " + binaryValue + ", an octal value of " + octalValue + ", and a hexadecimal value of " + hexadecimalValue + 
-										". Based on their preferred number of children ( " + user.getPrefChildCount() + " ), " + psychEvaluation;
+										+ "binary value of " + binaryValue + ", an octal value of " + octalValue + ", and a hexadecimal value of " + hexValue + 
+										". Based on their preferred number of children ( " + user.getPrefChildCount() + " ), " + psychEval;
 			
 			// CHECK IF PARAGRAPH IS GREATER THAN 300 LETETRS
 			String reportNoWhiteSpace = compAnalysisReport.replaceAll( " ", "" );
@@ -314,6 +206,7 @@ public class Main
 			}
 			else if ( replyWordCount < 30 )
 			{
+				System.out.println( "\nMINESWEEPER" );
 				MineSweeper minesweeper = new MineSweeper( 8, 8, 10 );
 				minesweeper.playGame();			
 			}
