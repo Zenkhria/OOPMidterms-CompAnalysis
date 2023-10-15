@@ -52,7 +52,7 @@ public class Evaluation
     
     for ( char letter : fullNameCheck.toCharArray() )
     {
-      String letterString = Character.toString( letter );
+      String letterString = String.valueOf( letter );
       if ( letterString.matches( "[b-df-hj-np-tv-z]" ) )
       {
         consonantCount++;
@@ -72,7 +72,7 @@ public class Evaluation
     
     for ( char letter : fullNameCheck.toCharArray() )
     {
-      String letterString = Character.toString( letter );
+      String letterString = String.valueOf( letter );
       if ( letterString.matches( "[aeiou]" ) )
       {
         vowelCount++;

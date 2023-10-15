@@ -3,7 +3,9 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -54,6 +56,14 @@ public class Main
 			// FAVE MOVIE INPUT & VALIDATION
 			user.setFavMovie();
 			if ( !validation.FavMovie( user.getFavMovie() ) )
+			{
+				rerunCount++;
+				continue;
+			};
+
+			// FAVE MOVIE CHAR INPUT & VALIDATION
+			user.setFavMovieChar();
+			if ( !validation.FavMovieChar( user.getFavMovieChar() ) )
 			{
 				rerunCount++;
 				continue;
@@ -123,17 +133,34 @@ public class Main
 			String ageCategory = evaluate.getAgeCategory( user );
 
 			// GET ZODIAC SIGN OF THE USER
-			// TODO: Place code here
-			String userZodiacSign = null;
 			String zodiacSign = evaluate.getZodiacSign( user.getBirthDate() );
 
-			// IDENTIFY IF USER'S FAVE MOVIE IS ACTION, COMEDY, DRAMA, OR THRILLER
-			// TODO: Place code here
-			String movieCategory = null;
+			// MINI MOVIE MAKER (HARD-CODED)
+			String movieCategory = "";
+			String characterType = "";
+			Character cobb = new Character( "Dominic Cobb", "Main" );
+			List<Character> inceptionChars = new ArrayList();
+			inceptionChars.add( cobb );
+			Movie inception = new Movie( "Inception", 2010, inceptionChars, "Action" );
+			List<Movie> movieDatabase= new ArrayList();
+			movieDatabase.add( inception );
 
-			// IDENTIFY IF USER'S FAVE MOVIE CHARACTER IS A MAIN OR SUPPORTING CHARACTER
-			// TODO: Place code here
-			String characterType = null;
+			// IDENTIFY IF USER'S FAVE MOVIE IS ACTION, COMEDY, DRAMA, OR THRILLER
+			for ( Movie movie : movieDatabase )
+			{
+				if ( user.getFavMovie().equalsIgnoreCase( movie.getMovieName() ) )
+				{
+					movieCategory = movie.getGenre();
+					// IDENTIFY IF USER'S FAVE MOVIE CHARACTER IS A MAIN OR SUPPORTING CHARACTER
+					for ( Character character : movie.getCharacters() )
+					{
+						characterType = character.getCharRole();
+					}
+				}
+			}
+
+			System.out.println( "Movie Genre: " + movieCategory );
+			System.out.println( "Movie Character Role: " + characterType );
 
 			// GET THE BINARY, OCTAL, AND HEXADECIMAL VALUES OF FAVE NUMBER
 			String binaryValue = evaluate.getFavNumBinary( user.getFavNum() );
@@ -141,7 +168,6 @@ public class Main
 			String hexValue = evaluate.getFavNumHex( user.getFavNum() );
 
 			// PROVIDE PSYCH FEEDBACK BASED ON PREFCHILDNUM
-			evaluate.getPsychEval( user.getPrefChildCount() );
 			String psychEval = evaluate.getPsychEval( user.getPrefChildCount() );
 			
 			// COMPREHENSIVE USER ANALYSIS REPORT
@@ -149,7 +175,7 @@ public class Main
 			String compAnalysisReport = user.getfullName() + " lives in " + user.getAddress() + " which can be found in " + region + 
 										". Their course, " +  user.getCourse() + ", is classified under CEU-Makati's " + courseCategory + 
 										" . There are " + consonantCount + " consonants, " + vowelCount + " vowels, and " + wordCount + " words in " + user.getFirstName() + "'s full name." +
-										" Their age falls under the " + ageCategory + " category. " + user.getFirstName() + "'s zodiac sign is " + userZodiacSign + 
+										" Their age falls under the " + ageCategory + " category. " + user.getFirstName() + "'s zodiac sign is " + zodiacSign + 
 										". Their favorite movie, " + user.getFavMovie() + ", falls under the " + movieCategory + " genre. "
 										+ "Their favorite movie character, " + user.getFavMovieChar() + ", is a " + characterType + " character. Their favorite number ( " + user.getFavNum() + " ), has a "
 										+ "binary value of " + binaryValue + ", an octal value of " + octalValue + ", and a hexadecimal value of " + hexValue + 

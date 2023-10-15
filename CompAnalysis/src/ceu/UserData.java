@@ -63,7 +63,7 @@ public class UserData
 
   public void setFavMovieChar( )
   {
-    System.out.println( "\nFavorite Movie Character: " );
+    System.out.print( "\nFavorite Movie Character: " );
     favMovieChar = sc.nextLine();
   }
 
