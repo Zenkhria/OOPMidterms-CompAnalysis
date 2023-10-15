@@ -91,10 +91,6 @@ public class Main
 				continue;
 			};
 			
-			// ASSIGN DETAILS TO RESPECTIVE POJO
-			// ObjectMapper objectMapper = new ObjectMapper();
-			// objectMapper.writeValue( new File( "userdata.json" ), user );
-			
 			System.out.println( "EVALUATION");
 			// GET THE REGION OF USER'S ADDRESS
 			// FIXME: Can't run code (access to file denied). Therefore, can't test. Please test.
@@ -115,11 +111,11 @@ public class Main
 							String city = cityNode.asText();
 							if ( city.equals( user.getAddress() ) ) 
 							{
-								System.out.println("The address " + user.getAddress() + " is in the region " + region );
+								System.out.println( "The address " + user.getAddress() + " is in the region " + region );
 							}
 							else
 							{
-								System.out.println("The address " + user.getAddress() + " is not in any region.");
+								System.out.println( "The address " + user.getAddress() + " is not in any region." );
 							}
 						}
 					}
@@ -131,7 +127,7 @@ public class Main
 			}
 			
 			// GET THE CLASSIFICATION OF USER'S COURSE
-			// TODO: Place code here
+			// FIXME: Add more code here
 			String courseCategory = null; // <- use this variable 
 
 			// GET NO. OF CONSONANTS & VOWELS IN USER'S FULL NAME
@@ -161,7 +157,28 @@ public class Main
 			int fullNameWordCount = wordsInFullName.length;
 			
 			// CHECK IF USER'S AGE IS SENIOR, MID, TEENAGER, CHILD, OR BABY
-			// TODO: Place code here
+			String ageCategory;
+			long age = user.getAge();
+			if ( age > 0 && age <= 2 )
+			{
+				ageCategory = "Baby";
+			}
+			else if ( age <= 12 )
+			{
+				ageCategory = "Child";
+			}
+			else if ( age <= 19 )
+			{
+				ageCategory = "Teenager";
+			}
+			else if ( age < 65 )
+			{
+				ageCategory = "Mid";
+			}
+			else
+			{
+				ageCategory = "Senior";
+			}
 
 			// GET ZODIAC SIGN OF THE USER
 			// TODO: Place code here
@@ -182,11 +199,8 @@ public class Main
 			// TODO: Place code here
 
 			// PLACEHOLDER VARIABLES
-			String userFirstName = null;
-			String ageCategory = null;
 			String userZodiacSign = null;
 			String movieCategory = null;
-			String favMovieChar = null;
 			String characterType = null;
 			String psychEvaluation = null;
 			
@@ -221,9 +235,9 @@ public class Main
 			String reply = sc.nextLine();
 			
 			// CHECK IF USER REPLY IS GREATER THAN 30 WORDS
-			String[] words = reply.split( "\\s+" ); // Split the string by whitespace
+			String[] words = reply.split( "\\s+" );
 			
-			int replyWordCount = words.length; // Count the words
+			int replyWordCount = words.length;
 			System.out.println( "Reply word count: " + replyWordCount );	
 
 			if ( replyWordCount > 30 )

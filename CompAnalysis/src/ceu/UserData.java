@@ -1,6 +1,8 @@
 package ceu;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -9,6 +11,7 @@ public class UserData
   // ATTRIBUTES
   private String fullName;
   private String firstName;
+  private long age;
   private String address;
   private String course;
   private String favMovie;
@@ -33,7 +36,7 @@ public class UserData
     setFirstName( fullName );
   }
 
-  public void setFirstName( String fulLName)
+  public void setFirstName( String fulLName )
   {
     String[] nameParts = fulLName.split(" ");
     String firstName = nameParts[ 0 ];
@@ -99,9 +102,21 @@ public class UserData
       sc.nextLine();
   }
 
-  public void setFirstName()
+  public void setAge()
   {
+    Date currentDate = new Date();
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+    try
+    {
+      Date userBirthDate = dateFormat.parse( birthDate );
+      long ageInMillis = currentDate.getTime() - userBirthDate.getTime();
+      long years = ageInMillis / ( 365 * 24 * 60 * 60 * 1000L );
+      this.age = years;
+    }
+    catch ( ParseException e ) 
+    {
+    }
   }
 
   // GETTERS
@@ -158,6 +173,11 @@ public class UserData
   public String getFirstName()
   {
     return this.firstName;
+  }
+
+  public long getAge()
+  {
+    return this.age;
   }
 }
 
