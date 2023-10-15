@@ -1,0 +1,11 @@
+// {
+//   "files.associations": {
+//     "javaconfig.json": "json"
+//   }
+// }
+
+{
+  "java.project.referencedLibraries": [
+  "C:/Users/user/Favorites/Downloads/gson-2.10.1.jar"
+]
+}

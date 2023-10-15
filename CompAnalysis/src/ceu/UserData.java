@@ -8,6 +8,7 @@ public class UserData
 {
   // ATTRIBUTES
   private String fullName;
+  private String firstName;
   private String address;
   private String course;
   private String favMovie;
@@ -26,38 +27,52 @@ public class UserData
   // SETTERS
   public void setfullName()
   {
-		  System.out.print( "\nFull Name: " );
-		  fullName = sc.next();
-      sc.nextLine();
+    System.out.print( "\nFull Name: " );
+    fullName = sc.nextLine();
+
+    setFirstName( fullName );
+  }
+
+  public void setFirstName( String fulLName)
+  {
+    String[] nameParts = fulLName.split(" ");
+    String firstName = nameParts[ 0 ];
+    this.firstName = firstName;  
   }
 
   public void setAddress() throws IOException
   {
-		  System.out.print( "\nAddress: " );
-		  address = sc.nextLine();
+    System.out.print( "\nAddress: " );
+    address = sc.nextLine();
   }
 
   public void setCourse( )
   {
-		  System.out.print( "\nCourse: " );
-		  course = sc.nextLine();
+    System.out.print( "\nCourse: " );
+    course = sc.nextLine();
   }
 
   public void setFavMovie( )
   {
-		  System.out.print( "\nFavMovie: " );
-		  favMovie = sc.nextLine();
+    System.out.print( "\nFavorite Movie: " );
+    favMovie = sc.nextLine();
+  }
+
+  public void setFavMovieChar( )
+  {
+    System.out.println( "\nFavorite Movie Character: " );
+    favMovieChar = sc.nextLine();
   }
 
   public void setFavFood( )
   {
-		  System.out.print( "\nFavFood: " );
+		  System.out.print( "\nFavorite Food: " );
 		  favFood = sc.nextLine();
   }
 
   public void setFavNum( )
   {
-		  System.out.print( "\nFavNum: " );
+		  System.out.print( " \nFavorite Number: " );
       favNum = sc.nextInt();
       sc.nextLine();
   }
@@ -84,6 +99,11 @@ public class UserData
       sc.nextLine();
   }
 
+  public void setFirstName()
+  {
+
+  }
+
   // GETTERS
   public String getfullName()
   {
@@ -103,6 +123,11 @@ public class UserData
   public String getFavMovie()
   {
 	return this.favMovie;
+  }
+
+  public String getFavMovieChar()
+  {
+	return this.favMovieChar;
   }
 
   public String getFavFood()
@@ -128,6 +153,11 @@ public class UserData
   public int getPrefChildCount()
   {
 	return this.prefChildCount;
+  }
+
+  public String getFirstName()
+  {
+    return this.firstName;
   }
 }
 

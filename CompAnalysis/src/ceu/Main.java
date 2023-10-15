@@ -1,16 +1,12 @@
 package ceu;
 import java.util.Scanner;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonSyntaxException;
 
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main
@@ -18,6 +14,7 @@ public class Main
 	static Scanner sc = new Scanner( System.in );
 	static int rerunCount = 0;
 	static InputValidation validation = new InputValidation();
+	static String region;
 
 	public static void main( String[] args ) throws IOException
 	{
@@ -100,30 +97,43 @@ public class Main
 			
 			System.out.println( "EVALUATION");
 			// GET THE REGION OF USER'S ADDRESS
-			// TODO: Place code here
-			try {
-					// Load and parse the JSON file
-					JsonParser jsonParser = new JsonParser();
-					FileReader fileReader = new FileReader( "Region.json" );
-					JsonObject json = ( JsonObject ) jsonParser.parse( fileReader );
+			// FIXME: Can't run code (access to file denied). Therefore, can't test. Please test.
+			try 
+			{
+				ObjectMapper objectMapper = new ObjectMapper();
+				JsonNode rootNode = objectMapper.readTree( new File( "C:\\Users\\user\\Favorites\\Downloads\\Compressed\\Resource" ) );
 
-					// Iterate through the JSON keys (regions)
-					for (String region : json.keySet()) {
-							if ( json.get( region ).getAsJsonArray().contains( user.getAddress() )) {
-									System.out.println( "The address " + user.getAddress() + " is in the region " + region. );
-									return; // Stop searching after finding a match
+				for ( JsonNode regionNode : rootNode ) 
+				{
+					region = regionNode.get( "regionName" ).asText();
+					JsonNode citiesNode = regionNode.get( "cities" );
+
+					if ( citiesNode.isArray() && citiesNode.elements().hasNext() ) 
+					{
+						for ( JsonNode cityNode : citiesNode ) 
+						{
+							String city = cityNode.asText();
+							if ( city.equals( user.getAddress() ) ) 
+							{
+								System.out.println("The address " + user.getAddress() + " is in the region " + region );
 							}
+							else
+							{
+								System.out.println("The address " + user.getAddress() + " is not in any region.");
+							}
+						}
 					}
-
-					// If no match is found
-					System.out.println("The address " + address + " is not in any region.");
-			} catch (Exception e) {
+				}
+			} 
+			catch ( Exception e ) 
+			{
 					e.printStackTrace();
 			}
 			
 			// GET THE CLASSIFICATION OF USER'S COURSE
 			// TODO: Place code here
-			
+			String courseCategory = null; // <- use this variable 
+
 			// GET NO. OF CONSONANTS & VOWELS IN USER'S FULL NAME
 			String fullNameCheck = user.getfullName().toLowerCase();
 			fullNameCheck = fullNameCheck.replaceAll( " ", "" );
@@ -171,12 +181,7 @@ public class Main
 			// PROVIDE PSYCH FEEDBACK BASED ON PREFCHILDNUM
 			// TODO: Place code here
 
-			
-			
-			
 			// PLACEHOLDER VARIABLES
-			String region = null;
-			String courseCategory = null;
 			String userFirstName = null;
 			String ageCategory = null;
 			String userZodiacSign = null;
@@ -188,13 +193,13 @@ public class Main
 			// COMPREHENSIVE USER ANALYSIS REPORT
 			System.out.println( "\nCOMPREHENSIVE USER ANALYSIS REPORT" );
 			String compAnalysisReport = user.getfullName() + " lives in " + user.getAddress() + "which can be found in " + region + 
-										" . Their course, " +  user.getCourse() + " , is classified under " + courseCategory + 
-										" . There are " + consonantCount + " consonants and " + vowelCount + " vowels in " + userFirstName + "'s full name. " +
-										" There are also " + fullNameWordCount + " words in " + user.getfullName() + " . " + user.getfullName() + "'s age falls under the "
-										+ ageCategory + " population. Their zodiac sign is " + userZodiacSign + "The user's favorite movie, " + user.getFavMovie() + ", falls under the " + movieCategory + "genre. "
-										+ favMovieChar + ", " + user.getfullName() + "'s favorite movie character, is a " + characterType + " character. Their favorite number, " + user.getFavNum() + ", has a "
+										". Their course, " +  user.getCourse() + ", is classified under CEU-Makati's " + courseCategory + 
+										" . There are " + consonantCount + " consonants, " + vowelCount + " vowels, and " + fullNameWordCount + " words in " + user.getFirstName() + "'s full name." +
+										" Their age falls under the " + ageCategory + " category. " + user.getFirstName() + "'s  zodiac sign is " + userZodiacSign + 
+										". Their favorite movie, " + user.getFavMovie() + ", falls under the " + movieCategory + "genre. "
+										+ "Their favorite movie character, " + user.getFavMovieChar() + ", is a " + characterType + " character. Their favorite number, " + user.getFavNum() + ", has a "
 										+ "binary value of " + binaryValue + ", an octal value of " + octalValue + ", and a hexadecimal value of " + hexadecimalValue + ". Based on " + user.getfullName() + "'s "
-										+ "preferred number of children, which is " + user.getPrefChildCount() + ", they " + psychEvaluation;
+										+ "preferred number of children ( " + user.getPrefChildCount() + " ), they " + psychEvaluation + ".";
 			
 			// CHECK IF PARAGRAPH IS GREATER THAN 300 LETETRS
 			String reportNoWhiteSpace = compAnalysisReport.replaceAll( " ", "" );
@@ -207,7 +212,7 @@ public class Main
 			
 			// PROVIDE COMPREHENSIVE USER ANALYSIS REPORT TO USER
 			System.out.println( compAnalysisReport );
-			System.out.println( "Letter Count: " + letterCount );
+			System.out.println( "\nLetter Count: " + letterCount );
 			
 			// GET REPLY FROM USER
 			System.out.println( "\nWhat do you think about the report?" );
