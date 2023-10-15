@@ -99,7 +99,7 @@ public class Main
 				continue;
 			};
 			
-			System.out.println( "EVALUATION");
+			System.out.println( "\nEVALUATION");
 			// GET THE REGION OF USER'S ADDRESS
 			// FIXME: Can't run code (access to file denied). Therefore, can't test. Please test.
 			try 
@@ -119,11 +119,11 @@ public class Main
 							String city = cityNode.asText();
 							if ( city.equals( user.getAddress() ) ) 
 							{
-								System.out.println( "The address " + user.getAddress() + " is in the region " + region );
+								System.out.println( "Address Region: " + region );
 							}
 							else
 							{
-								System.out.println( "The address " + user.getAddress() + " is not in any region." );
+								System.out.println( "Address Region: Not Found" );
 							}
 						}
 					}
@@ -137,6 +137,7 @@ public class Main
 			// GET THE CLASSIFICATION OF USER'S COURSE
 			// FIXME: Add more code here
 			String courseCategory = null; // <- use this variable 
+			System.out.println( "Course Category: " + courseCategory );
 
 			// GET NO. OF CONSONANTS & VOWELS IN USER'S FULL NAME
 			String fullNameCheck = user.getfullName().toLowerCase();
@@ -158,14 +159,17 @@ public class Main
 					vowelCount++;
 				}
 			}
+			System.out.println( "No. of Consonants in Full Name: " + consonantCount );
+			System.out.println( "No. of Vowels in Full Name: " + vowelCount );
 
 			// GET NO. OF WORDS IN USER'S FULL NAME
 			String fullName = user.getfullName();
 			String[] wordsInFullName = fullName.split( "\\s+" );
 			int fullNameWordCount = wordsInFullName.length;
+			System.out.println( "No. of Words in Full Name: " + fullNameWordCount );
 			
 			// CHECK IF USER'S AGE IS SENIOR, MID, TEENAGER, CHILD, OR BABY
-			String ageCategory;
+			String ageCategory; // FIXME: My birthday is on Oct 19, 2003 but I get categorized as a Child.
 			long age = user.getAge();
 			if ( age > 0 && age <= 2 )
 			{
@@ -187,6 +191,7 @@ public class Main
 			{
 				ageCategory = "Senior";
 			}
+			System.out.println( "Age Category: " + ageCategory );
 
 			// GET ZODIAC SIGN OF THE USER
 			// TODO: Place code here
@@ -199,8 +204,11 @@ public class Main
 
 			// GET THE BINARY, OCTAL, AND HEXADECIMAL VALUES OF FAVE NUMBER
 			String binaryValue = Integer.toBinaryString( user.getFavNum() );
+			System.out.println( "Binary Value of FavNum: " + binaryValue );
 			String octalValue = Integer.toOctalString( user.getFavNum() );
+			System.out.println( "Octal Value of FavNum: " + octalValue );
 			String hexadecimalValue = Integer.toHexString( user.getFavNum() );
+			System.out.println( "Hexadecimal Value of FavNum: " + hexadecimalValue );
 
 			// PROVIDE PSYCH FEEDBACK BASED ON PREFCHILDNUM
 			int childCount = user.getPrefChildCount();
@@ -252,8 +260,8 @@ public class Main
 										" Their age falls under the " + ageCategory + " category. " + user.getFirstName() + "'s zodiac sign is " + userZodiacSign + 
 										". Their favorite movie, " + user.getFavMovie() + ", falls under the " + movieCategory + " genre. "
 										+ "Their favorite movie character, " + user.getFavMovieChar() + ", is a " + characterType + " character. Their favorite number ( " + user.getFavNum() + " ), has a "
-										+ "binary value of " + binaryValue + ", an octal value of " + octalValue + ", and a hexadecimal value of " + hexadecimalValue + ". Based on " + user.getfullName() + "'s "
-										+ "preferred number of children ( " + user.getPrefChildCount() + " ), " + psychEvaluation;
+										+ "binary value of " + binaryValue + ", an octal value of " + octalValue + ", and a hexadecimal value of " + hexadecimalValue + 
+										". Based on their preferred number of children ( " + user.getPrefChildCount() + " ), " + psychEvaluation;
 			
 			// CHECK IF PARAGRAPH IS GREATER THAN 300 LETETRS
 			String reportNoWhiteSpace = compAnalysisReport.replaceAll( " ", "" );
